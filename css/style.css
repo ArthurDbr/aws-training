@@ -1,0 +1,113 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #16191f;
+  --muted: #5f6b7a;
+  --border: #d5dbe3;
+  --accent: #ff9900;
+  --accent-text: #16191f;
+  --ok: #1d8102;
+  --ok-bg: #e9f6e5;
+  --bad: #d13212;
+  --bad-bg: #fdecea;
+  --sel: #e8f1fb;
+  --sel-border: #0972d3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1419;
+    --card: #1a2028;
+    --text: #e6e9ee;
+    --muted: #9aa5b4;
+    --border: #2f3a47;
+    --ok: #6fd36b;
+    --ok-bg: #16301a;
+    --bad: #ff7b6b;
+    --bad-bg: #3a1a17;
+    --sel: #13283f;
+    --sel-border: #4aa3ff;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 16px 48px;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header, main { max-width: 760px; margin: 0 auto; }
+header { padding: 24px 0 8px; }
+h1 { font-size: 1.4rem; margin: 0; }
+h2 { font-size: 1.15rem; margin: 0 0 12px; }
+.muted { color: var(--muted); font-weight: normal; }
+.small { font-size: 0.875rem; margin: 4px 0 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+legend { font-weight: 600; margin-bottom: 8px; }
+label.check { display: flex; gap: 8px; align-items: center; padding: 4px 0; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+select, input[type="number"] {
+  font: inherit; padding: 6px 8px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--card); color: var(--text);
+}
+
+button {
+  font: inherit; cursor: pointer;
+  padding: 10px 16px; border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card); color: var(--text);
+}
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 600; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.topbar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.875rem; color: var(--muted); }
+.progress { height: 6px; background: var(--border); border-radius: 3px; margin: 8px 0 16px; overflow: hidden; }
+.progress > div { height: 100%; background: var(--accent); }
+.badge { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); margin-right: 4px; }
+.badge.new { border-color: var(--sel-border); color: var(--sel-border); }
+
+.question { font-size: 1.05rem; font-weight: 500; margin: 12px 0; }
+.choose { font-size: 0.875rem; color: var(--muted); margin-bottom: 8px; }
+
+.option {
+  display: flex; gap: 10px; width: 100%; text-align: left;
+  margin: 8px 0; padding: 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card);
+}
+.option .key { font-weight: 700; min-width: 1.2em; }
+.option.selected { background: var(--sel); border-color: var(--sel-border); }
+.option.correct { background: var(--ok-bg); border-color: var(--ok); }
+.option.wrong { background: var(--bad-bg); border-color: var(--bad); }
+
+.feedback { margin-top: 12px; padding: 12px; border-radius: 8px; border-left: 4px solid var(--border); background: var(--bg); }
+.feedback.ok { border-left-color: var(--ok); }
+.feedback.bad { border-left-color: var(--bad); }
+
+.actions { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+.score { font-size: 2.5rem; font-weight: 700; margin: 0; }
+.pass { color: var(--ok); } .fail { color: var(--bad); }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--border); }
+td.num { text-align: right; white-space: nowrap; }
+
+.review-item { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
+.navgrid { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
+.navgrid button { padding: 4px 0; width: 2.4em; font-size: 0.8rem; }
+.navgrid button.answered { background: var(--sel); border-color: var(--sel-border); }
+.navgrid button.current { outline: 2px solid var(--accent); }
+.navgrid button.flagged { border-color: var(--accent); border-width: 2px; }
